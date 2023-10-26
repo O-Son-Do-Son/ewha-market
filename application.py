@@ -11,26 +11,16 @@ def hello():
 def view_items():
     return render_template("insert.html")
     
-@application.route("/items_result", methods=['GET'])
-def result_items():
-    category = request.args.get("category")
-    location = request.args.get("location")
-    price = request.args.get("price")
-    status = request.args.get("status")
-    title = request.args.get("title")
-    content = request.args.get("content")
-    
-    print(category, location, price, status, title, content)
-    return render_template("result.html")
 
 @application.route("/items_insert", methods=['POST'])
 def insert_items():
     
     image_file = request.files["file"]
     image_file.save("static/images/{}".format(image_file.filename))
-    data=request.form
-        
-    return redirect(url_for("result_items", data=data, img_path="static/images/{}".format(image_file.filename)))
+    data = request.form
+    img_path = "static/images/{}".format(image_file.filename)
+    print(data["category"], data["location"], data["price"], data["status"], data["title"], data["content"])
+    return render_template("result.html", data=data, img_path=img_path)
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
