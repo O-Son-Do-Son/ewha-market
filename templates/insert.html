@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>이화 마켓</title>
+    </head>
+    <body>
+        <h2>오손도손 이화 마켓</h2>
+        <form action="/items_insert" method="post" enctype="multipart/form-data">
+            <div>
+                <br><br>
+                <label for="category">품목: </label>
+                <input type="text" name="category" id="category" required>
+            </div>
+            <div>
+                <br><br>
+                <label for="location">위치: </label>
+                <input type="text" name="location" id="location" required>
+            </div>
+            <div>
+                <br><br>
+                <label for="price">가격: </label>
+                <input type="text" name="price" id="price" required>
+            </div>
+            <div>
+                <br><br>
+                <label for="status">상태: </label>
+                <input type="text" name="status" id="status" required>
+            </div>
+            <div>
+                <br><br>
+                <label for="title">제목: </label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div>
+                <br><br>
+                <label for="content">본문: </label>
+                <input type="text" name="name" id="name" required>
+            </div>
+						<div>
+                                <br><br>
+								<label for="img">사진 첨부: </label>
+								<input type="file" name="file" /> <br><br>
+						</div>
+            <div>
+                <br><br>
+                <input type="submit" value="저장">
+            </div>
+        </form>
+    </body>
+</html>
