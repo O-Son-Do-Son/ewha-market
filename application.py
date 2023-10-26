@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import sys
 
 application = Flask(__name__)
@@ -21,7 +21,7 @@ def result_items():
     content = request.args.get("content")
     
     print(category, location, price, status, title, content)
-    #return render_template("result.html")
+    return render_template("result.html")
 
 @application.route("/items_insert", methods=['POST'])
 def insert_items():
@@ -30,7 +30,7 @@ def insert_items():
     image_file.save("static/images/{}".format(image_file.filename))
     data=request.form
         
-    return render_template("result.html", data=data, img_path="static/images/{}".format(image_file.filename))
+    return redirect(url_for("result_items", data=data, img_path="static/images/{}".format(image_file.filename)))
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
